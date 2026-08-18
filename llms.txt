@@ -1,0 +1,22 @@
+# eKYC Pro Zalo Checker API
+> Official integration context generated from the checked API expansion manifest.
+
+## Canonical resources
+- [zalo](https://docs.ekycpro.com/zalo-checker)
+
+## Contract facts
+- API base URL: https://api.ekycpro.com
+- Authentication: `X-API-Key` request header
+- API key environment variable: `EKYCPRO_API_KEY`
+- Processing mode: sync_single
+- Current prices are not embedded; use the official pricing page.
+
+## Products
+- `zalo`: Zalo Checker · input `phone` · fields: id, identifier, registered, billed, cost, cost_usd
+
+## Safety
+- Process only identifiers you are authorized to verify.
+- Do not expose API keys in browser code or commit secrets.
+- An undetermined result is not a confirmed negative.
+
+Last reviewed: 2026-08-18.
