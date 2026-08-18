@@ -1,2 +1,13 @@
-// Browser code must call a same-origin backend proxy; never expose an API key.
-fetch("/api/check-proxy",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({"service_type":"zalo","identifier":"+14155550100"})}).then(r=>r.json()).then(console.log);
+// Browser code must never hold an API key. This calls a same-origin backend
+// proxy (/api/check-proxy) that attaches the real API key server-side and
+// forwards to https://api.ekycpro.com/v1/check.
+fetch("/api/check-proxy", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ service_type: "zalo", identifier: "+14155550100" }),
+})
+  .then(async (r) => {
+    if (!r.ok) throw new Error(await r.text());
+    return r.json();
+  })
+  .then(console.log);
